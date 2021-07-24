@@ -1,4 +1,5 @@
 from Pages.BasePage import BasePage
+from Pages.HomePage import HomePage
 from selenium.webdriver.common.by import By
 from Config.config import TestData
 
@@ -34,4 +35,4 @@ class LoginPage(BasePage):
         self.do_click(self.LOGIN_BUTTON)
         self.driver.implicitly_wait(10)
         WELCOME_MSG = self.get_element_text(self.XPATH_WELCOME_MSG)
-        assert WELCOME_MSG
+        return HomePage(self.driver)
