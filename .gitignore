@@ -1,0 +1,12 @@
+.pytest_cache
+.idea/
+Config/__pycache__/
+Pages/__pycache__/
+Tests/__pycache__/
+
+
+
+
+
+
+
