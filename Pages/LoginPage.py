@@ -1,37 +1,40 @@
-from Pages.BasePage import BasePage
 from selenium.webdriver.common.by import By
-from Config.config import TestData
+import time
+from Utils.CustomLogger import Logsetup
 
-class LoginPage(BasePage):
-
-    """By locators or Object Repositories"""
-    EMAIL = (By.XPATH, '//*[@id="loginPanel"]/form/div[1]/input')
-    PASSWORD = (By.XPATH, '//*[@id="loginPanel"]/form/div[2]/input')
-    LOGIN_BUTTON = (By.XPATH, '//*[@id="loginPanel"]/form/div[3]/input')
-    SIGNUP_LINK = (By.LINK_TEXT, "Register")
-    XPATH_WELCOME_MSG = (By.XPATH, '//*[@id="leftPanel"]/p/b')
+class LoginPage:
+    pass
 
     """Constructor"""
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver.get(TestData.BASE_URL)
-        self.driver.maximize_window()
 
     """Page Actions"""
 
-    """Used to get login page title"""
-    def get_login_page_title(self, title):
-        self.get_title(title)
+    def __init__(self, browser):
+        self.browser = browser
 
-    """Used to validate if sign_up link exits"""
-    def is_sign_up_link_exits(self):
-        return self.is_visible(self.SIGNUP_LINK)
+    loginusername_name = "username"
+    loginpassword_name = "password"
+    clicklogin_xpath = "//input[@class='button']"
+    logoutlink_xpath = "//*[@id='leftPanel']/ul/li[8]/a"
+    logger = Logsetup.getlogparabank()
 
-    """Used to login to App and Assert Welcome Message after login is successful"""
-    def do_login(self, username, password):
-        self.do_send_keys(self.EMAIL, username)
-        self.do_send_keys(self.PASSWORD, password)
-        self.do_click(self.LOGIN_BUTTON)
-        self.driver.implicitly_wait(10)
-        WELCOME_MSG = self.get_element_text(self.XPATH_WELCOME_MSG)
-        assert WELCOME_MSG
+    def login(self, username, password):
+        self.browser.find_element(By.NAME, self.loginusername_name).send_keys(username)
+        self.browser.find_element(By.NAME, self.loginpassword_name).send_keys(password)
+        self.browser.find_element(By.XPATH, self.clicklogin_xpath).click()
+        msg = "ParaBank | Accounts Overview"
+        title = self.browser.title
+        print("title--------------", title)
+        if msg == title:
+            self.logger.info("Login Sucessful")
+            return True
+        else:
+            self.logger.info("Login Sucessful")
+            return False
+
+    def logout(self):
+        self.browser.find_element(By.XPATH, self.logoutlink_xpath).click()
+        self.logger.info("Logout Sucessful")
+        time.sleep(3)
+        self.logger.info("Closing browser")
+        self.browser.close()
