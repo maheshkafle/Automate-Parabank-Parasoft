@@ -32,6 +32,7 @@ class LoginPage:
             self.logger.info("Login Sucessful")
             return False
 
+
     def logout(self):
         self.browser.find_element(By.XPATH, self.logoutlink_xpath).click()
         self.logger.info("Logout Sucessful")
