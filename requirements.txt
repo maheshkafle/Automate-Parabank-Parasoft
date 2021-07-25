@@ -2,3 +2,7 @@ selenium
 pytest
 webdriver_manager
 pytest-xdist
+xls-writer
+xlsx-writer
+configparser
+python-dateutil
