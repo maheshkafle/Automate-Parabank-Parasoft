@@ -6,3 +6,4 @@ xls-writer
 xlsx-writer
 configparser
 python-dateutil
+openpyxl
