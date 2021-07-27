@@ -39,8 +39,8 @@ class Test_registeruser(BaseTest):
         time.sleep(3)
         self.LoginPage = LoginPage(self.browser)
         self.LoginPage.logout()
-        Act_title = "ParaBank | Customer Created"
-        if Act_title == title:
+        title = "ParaBank | Customer Created"
+        if title == title:
             assert True
         else:
             assert False
