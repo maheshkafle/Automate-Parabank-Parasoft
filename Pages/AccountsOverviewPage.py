@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 import time
 from Utils.CustomLogger import Logsetup
-from Utils.DateConverter import Date_spilt
+from Utils.DateConverter import Date_split
 from Utils import XlUtil
 
 class AccountsOverviewPage:

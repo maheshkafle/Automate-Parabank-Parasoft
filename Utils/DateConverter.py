@@ -4,7 +4,7 @@ from datetime import date,datetime
 import time
 import dateutil.parser
 
-class Date_spilt:
+class Date_split:
 
     def datetimeconverter(self):
         # get time, to use in a filename
