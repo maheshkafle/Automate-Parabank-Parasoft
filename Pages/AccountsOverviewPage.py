@@ -21,7 +21,7 @@ class AccountsOverviewPage:
         # date1 = datetime.date.today()
         # date1 = Date_spilt.dateconverter(date1)
         # date1 =str(date1)
-        date1= Date_spilt.datetimeconverter(self)
+        date1= Date_split.datetimeconverter(self)
         filename="C:\\Commit Projects\\Automate-Parabank-Parasoft\\Data"+date1+".xlsx"
         XlUtil.filecreate(filename)
         # print (date1)
