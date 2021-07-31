@@ -29,12 +29,12 @@ class AccountsOverviewPage:
         column = len(self.browser.find_elements_by_xpath("//table[@id='accountTable']//thead/tr/th"))
         row = len(self.browser.find_elements_by_xpath("//*[@id='accountTable']/tbody/tr"))
         # print (coln,row)
-        for column in range(1,column+1):
+        for c in range(1,column+1):
             data = self.browser.find_element_by_xpath("//table[@id='accountTable']//thead/tr/th["+str(column)+"]").text
-            XlUtil.writetoxl(filename,"Sheet1",1,column,data)
-        for row in range(1,row+1):
-            for column in range(1,column+1):
-                data1 = self.browser.find_element_by_xpath("//table[@id='accountTable']//tbody//tr["+str(row)+"]//td["+str(column)+"]").text
-                XlUtil.writetoxl(filename,"Sheet1",row+1,column,data1)
+            XlUtil.writetoxl(filename,"Sheet1",1,c,data)
+        for r in range(1,row+1):
+            for c in range(1,column+1):
+                data1 = self.browser.find_element_by_xpath("//table[@id='accountTable']//tbody//tr["+str(r)+"]//td["+str(c)+"]").text
+                XlUtil.writetoxl(filename,"Sheet1",r+1,c,data1)
         self.logger.info("Accounts Overview written to xls file")
         return filename
